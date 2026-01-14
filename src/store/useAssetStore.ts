@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { AssetCategory, PriorityLevel } from "@/types/goals";
+import { persist } from "zustand/middleware";
 
 interface Asset {
   id: string;
@@ -14,16 +15,23 @@ interface AssetStore {
   removeAsset: (id: string) => void;
 }
 
-export const useAssetStore = create<AssetStore>((set) => ({
-  assets: [],
+export const useAssetStore = create<AssetStore>()(
+  persist(
+    (set) => ({
+      assets: [],
 
-  addAsset: (newAsset) =>
-    set((state) => ({
-      assets: [...state.assets, newAsset],
-    })),
+      addAsset: (newAsset) =>
+        set((state) => ({
+          assets: [...state.assets, newAsset],
+        })),
 
-  removeAsset: (id) =>
-    set((state) => ({
-      assets: state.assets.filter((asset) => asset.id !== id),
-    })),
-}));
+      removeAsset: (id) =>
+        set((state) => ({
+          assets: state.assets.filter((asset) => asset.id !== id),
+        })),
+    }),
+    {
+      name: "vantage-storage",
+    }
+  )
+);
