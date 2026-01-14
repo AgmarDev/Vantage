@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { AssetCategory, PriorityLevel } from "@/types/goals";
 import { persist } from "zustand/middleware";
 
-interface Asset {
+export interface Asset {
   id: string;
   title: string;
   amount: number;
