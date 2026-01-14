@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { AssetCategory } from "@/types/goals";
 import { persist } from "zustand/middleware";
-import { arrayMove } from "@dnd-kit/sortable"; // Не забудь цей імпорт
+import { arrayMove } from "@dnd-kit/sortable";
 
 export interface Asset {
   id: string;
@@ -14,7 +14,7 @@ interface AssetStore {
   assets: Asset[];
   addAsset: (asset: Asset) => void;
   removeAsset: (id: string) => void;
-  reorderAssets: (activeId: string, overId: string) => void; // Тепер тут void
+  reorderAssets: (activeId: string, overId: string) => void;
 }
 
 export const useAssetStore = create<AssetStore>()(
@@ -32,7 +32,6 @@ export const useAssetStore = create<AssetStore>()(
           assets: state.assets.filter((asset) => asset.id !== id),
         })),
 
-      // Додаємо реалізацію методу перетягування
       reorderAssets: (activeId, overId) =>
         set((state) => {
           const oldIndex = state.assets.findIndex((a) => a.id === activeId);
