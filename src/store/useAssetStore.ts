@@ -6,7 +6,6 @@ interface Asset {
   title: string;
   amount: number;
   category: AssetCategory;
-  priority: PriorityLevel;
 }
 
 interface AssetStore {
