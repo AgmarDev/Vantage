@@ -1,5 +1,6 @@
 "use client";
 
+import { Summary } from "@/components/Summary";
 import { GoalForm } from "@/components/GoalForm";
 import { useAssetStore } from "@/store/useAssetStore";
 
@@ -24,6 +25,7 @@ export default function Home() {
 
         <section>
           <GoalForm />
+          <Summary />
         </section>
 
         <section className="space-y-4">
