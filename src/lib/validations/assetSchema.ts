@@ -12,3 +12,5 @@ export const assetSchema = z.object({
   ]),
   priority: z.enum(["low", "medium", "high", "critical"]),
 });
+
+export type AssetFormValues = z.infer<typeof assetSchema>;
