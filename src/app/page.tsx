@@ -1,5 +1,5 @@
 "use client";
-import { Summary } from "@/components/Summary";
+import { Summary } from "@/components/Summary/Summary";
 import { GoalForm } from "@/components/GoalForm";
 import { AssetList } from "@/components/AssetList";
 
